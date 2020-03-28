@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 @Service
@@ -69,11 +68,7 @@ public class CartService {
 
         Set<ProductInCartResponse> productDtos = new HashSet<>();
 
-        Iterator<Product> productIterator = cart.getProducts().iterator();
-
-        while (productIterator.hasNext()){
-            Product nextProduct = productIterator.next();
-
+        for (Product nextProduct : cart.getProducts()) {
             ProductInCartResponse productDto = new ProductInCartResponse();
             productDto.setId(nextProduct.getId());
             productDto.setName(nextProduct.getName());
