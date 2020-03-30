@@ -48,7 +48,7 @@ public class CartService {
             cart.setCustomer(customer);
         }
         for (Long id : request.getProductIds()) {
-            Product product = productService.getProduct(id);
+            Product product = productService.findProduct(id);
             cart.addProductToCart(product);
         }
         cartRepository.save(cart);
