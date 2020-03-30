@@ -2,6 +2,7 @@ package org.fasttrackit.onlineshop.domain;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -57,5 +58,19 @@ public class Cart {
 
     public void setProducts(Set<Product> products) {
         this.products = products;
+    }
+
+    // with equals and hashcode we override the way two objects in this class are compared
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cart cart = (Cart) o;
+        return id == cart.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
